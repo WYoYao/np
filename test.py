@@ -1,5 +1,6 @@
-arr=[2,3,4,5,6]
 
-arr.append(1)
-
-print(arr)
+ar=[1,3,2,4,1,5,3,2]
+s=set(ar)
+#ar.sort()
+print(ar)
+print(s)
