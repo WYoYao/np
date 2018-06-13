@@ -67,3 +67,16 @@ s2=set([3,4,5])
 print(s1 & s2) # set([3])
 print(s1 | s2) # set([1, 2, 3, 4, 5])
 ```
+
+### def
+
+> 通过 def 定义函数
+
+```python
+
+def fn(x):
+    if isinstance(x,int):
+        return x+x
+    else
+        pass # 可以相当于一个占位符，如果还没没有想好怎么处理可以先写个pass
+```
