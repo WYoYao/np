@@ -1,3 +1,19 @@
 {
-    "python.linting.enabled": false
+    "python.linting.enabled": false,
+    "python.pythonPath": "C:\\Users\\XX\\AppData\\Local\\Programs\\Python\\Python36\\python.exe",
+    "python.formatting.provider": "black",
+    "python.unitTest.pyTestArgs": [
+        "."
+    ],
+    "python.unitTest.unittestEnabled": false,
+    "python.unitTest.nosetestsEnabled": false,
+    "python.unitTest.pyTestEnabled": false,
+    "python.unitTest.unittestArgs": [
+        "-v",
+        "-s",
+        ".",
+        "-p",
+        "*test.py"
+    ],
+    "python.unitTest.promptToConfigure": false
 }

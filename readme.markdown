@@ -38,8 +38,25 @@ JS                          | python                       | 描述
 add 会返回Set对象             | add 只会添加属性，不会返回对象   |在Set对象尾部添加一个元素。
 delete                      | remove                       |移除Set的中与这个值相等的元素
 
+### Function Vs def
+
+特性 | JS | python | 区别
+--  |--|-- | --
+默认参数 | true | true | JS 中的默认参数如果是引用类型，引用地址不相同,python中的引用地址则相同
+扩展预算福 | ...| * | 定义方法是将参数集合转换为Tuple,调用的时候将Tuple转换成参数序列  
+**  | 无   | ** 将参数转换成为键值对传入,同时也用于def 参数的获取,但是不会影响到外部的引用变量
+
+参数方式 | 作用 
+--|--
+必填参数| 必填
+默认参数| 默认不为空
+可变参数| 长度不限制
+关键字参数| 序列 key-value 形式传入
+命名关键字| key-value 传入
+
+
 
 
 关键字参数
 
-[明天继续](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431752945034eb82ac80a3e64b9bb4929b16eeed1eb9000)
+[明天继续](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431865288798deef438d865e4c2985acff7e9fad15e3000)

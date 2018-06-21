@@ -1,0 +1,8 @@
+
+### collections
+
+```python
+from collections import Iterable
+isinstance('abc', Iterable) 
+# str是否可迭代
+```
