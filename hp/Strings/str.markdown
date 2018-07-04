@@ -1,5 +1,8 @@
 # class str
 
+[参考链接](https://segmentfault.com/a/1190000004598007)
+[参考链接](http://www.runoob.com/python/att-string-strip.html)
+
 > class str(object)
 >    str(object='') -> str
 >    传入空值直接返回长度为0的字符串
@@ -382,51 +385,57 @@ print('db.kun.ac.cn'.strip('cbd.un'))
 # 'kun.a'
 ```
 
->  partition(...)
+>  partition(...)>  partition(...)
 >      S.partition(sep) -> (head, sep, tail)
 >
->      Search for the separator sep in S, and return the part before it,
->      the separator itself, and the part after it.  If the separator is not
->      found, return S and two empty strings.
->
+>      partition() 方法用来根据指定的分隔符将字符串进行分割。
+>      如果字符串包含指定的分隔符，则返回一个3元的元组，第一个为分隔符左边的子串，第二个为分隔符本身，第三个为分隔符右边的子串。
+
+```
+print("hello World Everyone".partition("World"))
+# ('hello ', 'World', ' Everyone')
+print("hello World World Everyone".partition("World"))
+# ('hello ', 'World', ' World Everyone')
+```
+
 >  replace(...)
 >      S.replace(old, new[, count]) -> str
 >
->      Return a copy of S with all occurrences of substring
->      old replaced by new.  If the optional argument count is
->      given, only the first count occurrences are replaced.
->
+>      Python replace() 方法把字符串中的 old（旧字符串） 替换成 new(新字符串)，如果指定第三个参数max，则替换不超过 max 次。
+
+```
+print("123123123".replace("3", "34"))
+# 123412341234
+
+print("123123123".replace("3", "34", 2))
+# 12341234123
+
+print("123123123".replace("3", "34", 10))
+# 123412341234
+```
+
 >  rfind(...)
 >      S.rfind(sub[, start[, end]]) -> int
 >
->      Return the highest index in S where substring sub is found,
->      such that sub is contained within S[start:end].  Optional
->      arguments start and end are interpreted as in slice notation.
->
->      Return - 1 on failure.
->
+>      Python rfind() 返回字符串最后一次出现的位置(从右向左查询)，如果没有匹配项则返回-1。
+
 >  rindex(...)
 >      S.rindex(sub[, start[, end]]) -> int
 >
->      Return the highest index in S where substring sub is found,
->      such that sub is contained within S[start:end].  Optional
->      arguments start and end are interpreted as in slice notation.
->
->      Raises ValueError when the substring is not found.
->
+>      Python rindex() 返回子字符串 str 在字符串中最后出现的位置，如果没有匹配的字符串会报异常，你可以指定可选参数[beg:end]设置查找的区间。
+
 >  rjust(...)
 >      S.rjust(width[, fillchar]) -> str
 >
->      Return S right-justified in a string of length width. Padding is
->      done using the specified fill character(default is a space).
->
+>      Python rjust() 返回一个原字符串右对齐,并使用空格填充至长度 width 的新字符串。如果指定的长度小于字符串的长度则返回原字符串。
+
 >  rpartition(...)
 >      S.rpartition(sep) -> (head, sep, tail)
 >
->      Search for the separator sep in S, starting at the end of S, and return
->      the part before it, the separator itself, and the part after it.  If the
->      separator is not found, return two empty strings and S.
->
+>      rpartition() 方法类似于 partition() 方法，只是该方法是从目标字符串的末尾也就是右边开始搜索分割符。。
+
+如果字符串包含指定的分隔符，则返回一个3元的元组，第一个为分隔符左边的子串，第二个为分隔符本身，第三个为分隔符右边的子串。
+
 >  rsplit(...)
 >      S.rsplit(sep=None, maxsplit=-1) -> list of strings
 >
@@ -439,73 +448,138 @@ print('db.kun.ac.cn'.strip('cbd.un'))
 >  rstrip(...)
 >      S.rstrip([chars]) -> str
 >
->      Return a copy of the string S with trailing whitespace removed.
->      If chars is given and not None, remove characters in chars instead.
+>      Python rstrip() 删除 string 字符串末尾的指定字符（默认为空格）.
+
+```
+s = "     this is string example....wow!!!     "
+print(s.rstrip())
+#     this is string example....wow!!!
+s = "88888888this is string example....wow!!!8888888"
+print(s.rstrip('8'))
+# 88888888this is string example....wow!!!
+```
+
 >
 >  split(...)
 >      S.split(sep=None, maxsplit=-1) -> list of strings
 >
->      Return a list of the words in S, using sep as the
->      delimiter string.  If maxsplit is given, at most maxsplit
->      splits are done. If sep is not specified or is None, any
->      whitespace string is a separator and empty strings are
->      removed from the result.
+>      Python split() 通过指定分隔符对字符串进行切片，如果参数 num 有指定值，则仅分隔 num 个子字符串
+
+```
+s = "Line1-abcdef \nLine2-abc \nLine4-abcd"
+print(s.split())
+print(s.split(' ', 1))
+```
+
 >
 >  splitlines(...)
 >      S.splitlines([keepends]) -> list of strings
 >
->      Return a list of the lines in S, breaking at line boundaries.
->      Line breaks are not included in the resulting list unless keepends
-> is given and true.
+>      Python splitlines() 按照行('\r', '\r\n', \n')分隔，返回一个包含各行作为元素的列表，如果参数 keepends 为 False，不包含换行符，如果为 True，则保留换行符。
+
+```
+s1 = 'ab c\n\nde fg\rkl\r\n'
+print(s1.splitlines())
+
+s2 = 'ab c\n\nde fg\rkl\r\n'
+print(s2.splitlines(True))
+
+```
+
 >
 >  startswith(...)
 >      S.startswith(prefix[, start[, end]]) -> bool
 >
->      Return True if S starts with the specified prefix, False otherwise.
->      With optional start, test S beginning at that position.
->      With optional end, stop comparing S at that position.
->      prefix can also be a tuple of strings to try.
+>      Python startswith() 方法用于检查字符串是否是以指定子字符串开头，如果是则返回 True，否则返回 False。如果参数 beg 和 end 指定值，则在指定范围内检查。
+
+```
+s = "Hello World"
+
+print(s.startswith("Hello", 0, len(s)))
+# True
+```
+
 >
 >  strip(...)
 >      S.strip([chars]) -> str
 >
->      Return a copy of the string S with leading and trailing
->      whitespace removed.
->      If chars is given and not None, remove characters in chars instead.
->
+>      Python strip() 方法用于移除字符串头尾指定的字符（默认为空格或换行符）或字符序列。该方法只能删除开头或是结尾的字符，不能删除中间部分的字符。
+
+```
+s = "00000003210Runoob01230000000"
+print(s.strip('0'))  # 去除首尾字符 0
+# 3210Runoob0123
+
+s2 = "   Runoob      "   # 去除首尾空格
+print(s2.strip())
+# Runoob
+```
+
 >  swapcase(...)
 >      S.swapcase() -> str
->
->      Return a copy of S with uppercase characters converted to lowercase
-> and vice versa.
->
+>   Python swapcase() 方法用于对字符串的大小写字母进行转换。
+
+```
+s = "hello WORLD"
+
+print(s.swapcase())
+# HELLO world
+```
+
 >  title(...)
 >      S.title() -> str
 >
->      Return a titlecased version of S, i.e. words start with title case
->      characters, all remaining cased characters have lower case.
->
+>      Python title() 方法返回"标题化"的字符串,就是说所有单词都是以大写开始，其余字母均为小写(见 istitle())。
+
+```
+s = "this is string example....wow!!!"
+print(s.title())
+# This Is String Example....Wow!!!
+```
+
 >  translate(...)
 >      S.translate(table) -> str
 >
->      Return a copy of the string S in which each character has been mapped
->      through the given translation table. The table must implement
->      lookup/indexing via __getitem__, for instance a dictionary or list,
->      mapping Unicode ordinals to Unicode ordinals, strings, or None. If
->      this operation raises LookupError, the character is left untouched.
->      Characters mapped to None are deleted.
->
+>       Python maketrans() 方法用于创建字符映射的转换表，对于接受两个参数的最简单的调用方式， 
+第一个参数是字符串，表示需要转换的字符，第二个参数也是字符串表示转换的目标。 
+注：两个字符串的长度必须相同，为一一对应的关系。 
+
+```
+intab = "abcde"
+outtab = "12345"
+# a=>1 b=>2 c=>3 d=>4 e=>5
+trantab = str.maketrans(intab, outtab)
+
+s = "edcbaabcde"
+print(s.translate(trantab))
+```
+
 >  upper(...)
 >      S.upper() -> str
 >
->      Return a copy of S converted to uppercase.
->
+>      返回小写字母转为大写字母的字符串。
+
+```
+str = "this is string example....wow!!!"
+
+print(str.upper())
+```
+
 >  zfill(...)
 >      S.zfill(width) -> str
 >
->      Pad a numeric string S with zeros on the left, to fill a field
->      of the specified width. The string S is never truncated.
->
+>      指定字符串的长度。原字符串右对齐，前面填充0。
+
+```
+str = "this is string example....wow!!!"
+
+print(str.zfill(40))
+# 00000000this is string example....wow!!!
+print(str.zfill(50))
+# 000000000000000000this is string example....wow!!!
+```
+
+
 > ----------------------------------------------------------------------
 >  Static methods defined here:
 >
